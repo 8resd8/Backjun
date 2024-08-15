@@ -4,43 +4,44 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
-// https://www.acmicpc.net/problem/15649
+// https://www.acmicpc.net/problem/15656
 
-public class NM1_15649 {
-    static int[] visited;
+public class NM7_15656 {
     static int N, M;
-    static private final StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
         N = Integer.parseInt(input[0]);
         M = Integer.parseInt(input[1]);
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
         int[] numbers = new int[N];
         for (int i = 0; i < N; i++) {
-            numbers[i] = i + 1;
+            numbers[i] = Integer.parseInt(st.nextToken());
         }
+        Arrays.sort(numbers);
 
-        permutation(numbers, new ArrayList<Integer>(), new boolean[N]);
-
+        combination(new ArrayList<>(), numbers);
     }
 
-    private static void permutation(int[] numbers, ArrayList<Integer> temp, boolean[] visited) {
+    private static void combination(ArrayList<Integer> temp, int[] numbers) {
         if (temp.size() == M) {
-            System.out.println(temp);
+            StringBuilder sb = new StringBuilder();
+            for (Integer num : temp) {
+                sb.append(num).append(" ");
+            }
+            System.out.println(sb);
             return;
         }
 
         for (int i = 0; i < N; i++) {
-            if (visited[i]) continue;
-            visited[i] = true;
             temp.add(numbers[i]);
-
-            permutation(numbers, temp, visited);
-            visited[i] = false;
+            combination(temp, numbers);
             temp.remove(temp.size() - 1);
-
         }
     }
 }
