@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-// // https://www.acmicpc.net/problem/15650
+// https://www.acmicpc.net/problem/15650
 
 public class NM2_15650 {
     static int[] visited;

@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+// https://www.acmicpc.net/problem/15651
 public class NM3_15651 {
     static int N, M;
-
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] input = br.readLine().split(" ");
@@ -16,6 +17,7 @@ public class NM3_15651 {
 
         ArrayList<Integer> temp = new ArrayList<>();
         permutation(temp);
+        System.out.print(sb);
     }
 
 /*
@@ -29,11 +31,10 @@ public class NM3_15651 {
 
     private static void permutation(ArrayList<Integer> temp) {
         if (temp.size() == M) {
-            StringBuilder sb = new StringBuilder();
             for (int number : temp) {
                 sb.append(number).append(" ");
             }
-            System.out.println(sb);
+            sb.append("\n");
             return;
         }
 
