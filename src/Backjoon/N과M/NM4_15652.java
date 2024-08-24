@@ -1,4 +1,4 @@
-package Backjoon.N과M;
+package 입출력과사칙연산.src.Backjoon.N과M;
 
 import java.io.BufferedReader;
 import java.io.IOException;
