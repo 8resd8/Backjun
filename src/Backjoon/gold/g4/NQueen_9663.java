@@ -37,7 +37,7 @@ public class NQueen_9663 {
     private static boolean check(int i) {
         for (int j = 0; j < N; j++) {
             if (j == i) continue;
-            if ()
+            if (true);
         }
 
         return true;
