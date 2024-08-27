@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Queue;
+
+// https://www.acmicpc.net/problem/2252
 
 public class 줄세우기_2252 {
     static int N, M;
@@ -29,22 +30,15 @@ public class 줄세우기_2252 {
             String[] input = br.readLine().split(" ");
             int a = Integer.parseInt(input[0]);
             int b = Integer.parseInt(input[1]);
-            adj.get(a).add(b); // 그래프의 간선 연결시키기
+            adj.get(a).add(b); // 그래프의 간선 연결시키기 a -> b로 가기때문에 b의 값을 증가
 //            adj.get(b).add(a); // 단방향 설정 (양방향 x)
+            inDegree[b]++; // b의 진입차수를 늘려야한다. (a -> b)
         }
-
-        // v의 진입 차수 증가
-        for (int i = 1; i < N + 1; i++) {
-            for (Integer v : adj.get(i)) {
-                inDegree[v]++;
-            }
-        }
-
-        Queue<Integer> queue = new ArrayDeque<>();
 
         // 진입차수가 0인 값 큐에 넣기
+        Queue<Integer> queue = new ArrayDeque<>();
         for (int i = 1; i < N + 1; i++) { // 0은 사용하지 않고 1부터 N까지 사용
-            if (inDegree[i] == 0) {
+            if (inDegree[i] == 0) { // a -> b, i를 큐에 넣음
                 queue.add(i);
             }
         }
@@ -54,7 +48,6 @@ public class 줄세우기_2252 {
         while (!queue.isEmpty()) {
             int curNode = queue.poll(); // 큐에서 노드를 꺼내고
             result.add(curNode); // 결과 리스트에 추가
-
             ArrayList<Integer> list = adj.get(curNode); // 현재 노드의 인접리스트 갖오기
             for (Integer num : list) {
                 inDegree[num]--; // 해당하는 노드로 들어오는 간선 하나 제거
@@ -63,7 +56,12 @@ public class 줄세우기_2252 {
                 }
             }
         }
-        System.out.println(result);
 
+
+        for (Integer node : result) {
+            // a가 b보다 앞에 온다는 조건만 만족한다면
+            // 위상 정렬은 여러 가지 가능한 정렬 결과를 얻을 수 있음
+            System.out.print(node + " ");
+        }
     }
 }
