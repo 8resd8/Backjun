@@ -26,27 +26,31 @@ public class 뱀과사다리게임_16928 {
         while (!queue.isEmpty()) {
             int current = queue.poll();
             if (current == 100) {
-                answer = visited[current] - 1;
+                answer = visited[current];
                 return;
             }
 
             for (int i = 1; i <= 6; i++) {
                 int next = current + i;
 
-                if (next > 100 || baem[next] != 0 || visited[next] != 0) continue;
+                if (next > 100 || visited[next] != 0) continue;
 
-                if (sadary[next] == 0) {
+                if (sadary[next] != 0) { // 일단 이동
+                    queue.add(sadary[next]);
+                    if (visited[sadary[next]] == 0) // 이미 값이 있으면 +1
+                        visited[sadary[next]] = visited[current] + 1;
+                } else if (baem[next] != 0) {
+                    queue.add(baem[next]);
+                    if (visited[baem[next]] == 0)
+                        visited[baem[next]] = visited[current] + 1;
+                } else {
                     queue.add(next);
                     visited[next] = visited[current] + 1;
-                } else {
-                    queue.add(sadary[next]);
-                    visited[sadary[next]] = visited[current] + 1;
                 }
-
             }
+
         }
     }
-
 
     private static void init() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
