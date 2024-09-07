@@ -1,4 +1,4 @@
-package 입출력과사칙연산.src.Backjoon.gold.g3;
+package Backjoon.gold.g3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +24,6 @@ public class 불_4179 {
         fire = new int[N][M];
         jiHun = new int[N][M];
         visited = new int[N][M];
-//        go = new int[N][M];
         map = new char[N][M];
         answer = -1;
         Queue<int[]> fire = new ArrayDeque<>();
@@ -32,7 +31,6 @@ public class 불_4179 {
 
         for (int i = 0; i < N; i++) {
             Arrays.fill(visited[i], -1);
-//            Arrays.fill(go[i], -1);
         }
 
         for (int i = 0; i < N; i++) {
@@ -45,24 +43,12 @@ public class 불_4179 {
                 } else if (map[i][j] == 'J') {
                     jihun.add(new int[]{i, j});
                     visited[i][j] = 0;
-//                    go[i][j] = 0;
-
                 }
             }
         }
 
         fireBfs(fire);
         jihunBfs(jihun);
-
-//        for (int[] ints : visited) {
-//            System.out.println(Arrays.toString(ints));
-//        }
-//        System.out.println();
-//
-//        for (int[] ints : go) {
-//            System.out.println(Arrays.toString(ints));
-//        }
-
 
         System.out.println(answer == -1 ? "IMPOSSIBLE" : answer);
     }

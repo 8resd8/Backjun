@@ -30,6 +30,7 @@ public class 알파벳_1987 {
 
         dfs(0, 0, map[0][0]);
         System.out.println(answer);
+
     }
 
     private static void dfs(int x, int y, char c) {
