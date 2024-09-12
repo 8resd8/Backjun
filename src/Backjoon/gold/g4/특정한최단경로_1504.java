@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class 특정한최단경로 {
+// https://www.acmicpc.net/problem/1504
+
+public class 특정한최단경로_1504 {
     static class Edge implements Comparable<Edge> {
         int end, cost;
 
@@ -22,6 +24,7 @@ public class 특정한최단경로 {
     static int N, E;
     static ArrayList<ArrayList<Edge>> adj;
     static int[] dist;
+    static boolean cant;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -45,6 +48,10 @@ public class 특정한최단경로 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int move1 = Integer.parseInt(st.nextToken());
         int move2 = Integer.parseInt(st.nextToken());
+        if (move1 == move2) {
+            System.out.println(0);
+            return;
+        }
 
 
         // 1 -> move1 -> move2 -> N
@@ -52,7 +59,8 @@ public class 특정한최단경로 {
         // 1 -> move2 -> move1 -> N
         int result1 = dijkstra(1, move2) + dijkstra(move2, move1) + dijkstra(move1, N);
 
-        System.out.println(Math.min(result0, result1));
+        System.out.println(cant ? -1 : Math.min(result0, result1));
+//        System.out.println(Math.min(result0, result1) < 0 ? -1 : Math.min(result0, result1));
     }
 
     static int dijkstra(int start, int end) {
@@ -75,6 +83,9 @@ public class 특정한최단경로 {
                 }
 
             }
+        }
+        if (dist[end] == Integer.MAX_VALUE) {
+            cant = true;
         }
         return dist[end];
     }
