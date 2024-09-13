@@ -3,7 +3,6 @@ package Backjoon.silver.s1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 // https://www.acmicpc.net/problem/14889
@@ -18,7 +17,6 @@ public class 스타트와링크_14889 { // 09:13
         // 모든 조합을 구하기
         combination(0);
         System.out.println(answer);
-
     }
 
     private static void init() throws IOException {
@@ -46,15 +44,16 @@ public class 스타트와링크_14889 { // 09:13
 
                 if (visited[i] && visited[j]) {
                     aTeam += map[i][j] + map[j][i];
-                } else if (!visited[i] && !visited[j]){
+                } else if (!visited[i] && !visited[j]) {
                     bTeam += map[i][j] + map[j][i];
                 }
             }
         }
-        answer = Math.min(answer, Math.abs(aTeam/2 - bTeam/2));
+        answer = Math.min(answer, Math.abs(aTeam / 2 - bTeam / 2));
     }
 
     private static void combination(int index) {
+        if (answer == 0) return;
         if (index == N / 2) {
             solve();
             return;

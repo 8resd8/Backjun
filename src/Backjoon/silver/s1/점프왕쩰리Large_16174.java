@@ -11,7 +11,6 @@ public class 점프왕쩰리Large_16174 {
     static int N;
     static int[][] map;
     static String answer = "";
-    static boolean flag;
     static boolean[][] visited;
 
     public static void main(String[] args) throws IOException {
@@ -31,12 +30,13 @@ public class 점프왕쩰리Large_16174 {
     }
 
     private static void dfs(int x, int y) {
-        if (flag || visited[x][y]) return;
+        if (answer.equals("HaruHaru")) return;
+
+        if (visited[x][y]) return;
         visited[x][y] = true;
 
         if (map[x][y] == -1) {
             answer = "HaruHaru";
-            flag = true; // 찾으면 모든 dfs 종료
             return;
         }
 
@@ -51,7 +51,7 @@ public class 점프왕쩰리Large_16174 {
             dfs(nx, ny);
         }
 
-        visited[x][y] = false;
+//        visited[x][y] = false;
     }
 
 
