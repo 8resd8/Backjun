@@ -6,13 +6,7 @@ import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-/**
-     https://www.acmicpc.net/problem/21924
-     최소 스패닝 트리 - kruskal (크루스칼) 알고리즘
-     Edge + Union-Find + PriorityQueue
- */
-
-public class 도시건설_21924 {
+public class 도시분할계획_1647 {
     static class Edge implements Comparable<Edge> {
         int start, end, cost;
 
@@ -28,50 +22,69 @@ public class 도시건설_21924 {
         }
     }
 
-    static int N, M;
+    static int N, M, removeEdge;
     static int[] parent;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken()); // 정점
-        M = Integer.parseInt(st.nextToken()); // 간선
-        PriorityQueue<Edge> pq = new PriorityQueue<>();
-        long totalCost = 0; // 모든 도로의 비용, 최대 1000억
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
         makeSet();
+        PriorityQueue<Edge> pq = new PriorityQueue<>();
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             int start = Integer.parseInt(st.nextToken());
             int end = Integer.parseInt(st.nextToken());
             int cost = Integer.parseInt(st.nextToken());
-            totalCost += cost;
             pq.add(new Edge(start, end, cost));
         }
 
-        System.out.println(kruskal(pq, totalCost));
+//        System.out.println(kruskal(pq) - removeEdge);
+        System.out.println(kruskal2(pq));
     }
 
-    private static long kruskal(PriorityQueue<Edge> pq, long totalCost) {
-        long minCost = 0;
-        int count = 0;
+    private static void makeSet() {
+        parent = new int[N + 1];
+        for (int i = 0; i <= N; i++) {
+            parent[i] = i;
+        }
+    }
 
+    // Version1.
+    // 최대 크기를 따로 저장해서 마지막에 빼기
+    private static long kruskal(PriorityQueue<Edge> pq) {
+        long cost = 0;
+        int maxEdge = 0;
         while (!pq.isEmpty()) {
             Edge cur = pq.poll();
-
-            // 연결이 가능하다면 count증가, 비용합산
             if (union(cur.start, cur.end)) {
-                minCost += cur.cost;
-                count++;
+                cost += cur.cost;
+                maxEdge = Math.max(maxEdge, cur.cost);
             }
         }
+        removeEdge = maxEdge; // 연결된 것중에서 가장 큰 비용을 제거하면 된다.
+        return cost;
+    }
 
-        return count == N - 1 ? (totalCost - minCost) : -1; // 모든 간선의 연결: N-1
+    // Version2.
+    // 우선순위 큐의 특징에 따라 큐가 빌 때까지가 아니라
+    // 큐를 1개 남기고 종료하면 된다.
+    private static long kruskal2(PriorityQueue<Edge> pq) {
+        long cost = 0;
+        int size = pq.size() - 1;
+        for (int i = 0; i < size; i++) {
+            Edge cur = pq.poll();
+            if (union(cur.start, cur.end)) {
+                cost += cur.cost;
+            }
+        }
+        return cost;
     }
 
     private static boolean union(int a, int b) {
         a = find(a);
         b = find(b);
-
         if (a == b) return false;
         parent[b] = a;
         return true;
@@ -80,12 +93,5 @@ public class 도시건설_21924 {
     private static int find(int a) {
         if (parent[a] == a) return a;
         return parent[a] = find(parent[a]);
-    }
-
-    private static void makeSet() { // 루트노드 초기화
-        parent = new int[N + 1];
-        for (int i = 0; i <= N; i++) {
-            parent[i] = i;
-        }
     }
 }
