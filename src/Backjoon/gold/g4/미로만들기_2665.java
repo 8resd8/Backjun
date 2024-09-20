@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+// https://www.acmicpc.net/problem/2665
+
 public class 미로만들기_2665 {
     static int N;
     static int[][] map;
