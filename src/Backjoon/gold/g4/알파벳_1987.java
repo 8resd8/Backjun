@@ -1,4 +1,4 @@
-package 입출력과사칙연산.src.Backjoon.gold.g4;
+package Backjoon.gold.g4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 // https://www.acmicpc.net/problem/1987
 
-public class 알파벳 {
+public class 알파벳_1987 {
     static int R, C, answer, count;
     static char[][] map;
     static boolean[] alpha;
@@ -30,6 +30,7 @@ public class 알파벳 {
 
         dfs(0, 0, map[0][0]);
         System.out.println(answer);
+
     }
 
     private static void dfs(int x, int y, char c) {

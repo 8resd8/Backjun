@@ -8,7 +8,7 @@ public class _1157 {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         String newInput = input.toLowerCase(Locale.ROOT); // 모두 일괄 소문자 변환
-        int[] result = new int[27]; // 알파벳 횟수 저장할 공간
+        int[] result = new int[27]; // 알파벳_1987 횟수 저장할 공간
         int max = Integer.MIN_VALUE;
         int index = -1;
 

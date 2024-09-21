@@ -11,7 +11,7 @@ public class _1316 {
 
         for (int i = 0; i < n; i++) {
             String s = sc.next();
-            Boolean[] visited = new Boolean[26]; // 알파벳 개수
+            Boolean[] visited = new Boolean[26]; // 알파벳_1987 개수
             Arrays.fill(visited, false);
             boolean groupWord = true;
 
