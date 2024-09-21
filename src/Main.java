@@ -1,40 +1,50 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
 
-    static int max;
-
-    static void calculateScore(int idx, int N, int L, int score, int calory, int[] tasteScores, int[] calories) {
-        if (calory > L) return;
-
-        max = Math.max(score, max);
-        for (int i = idx; i < N; i++) {
-            calculateScore(i + 1, N, L, score + tasteScores[i], calory + calories[i], tasteScores, calories);
-        }
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine());
-        for (int tc = 1; tc <= T; tc++) {
-            max = 0;
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int N = Integer.parseInt(st.nextToken());
-            int L = Integer.parseInt(st.nextToken());
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-            int[] calories = new int[N];
-            int[] tasteScores = new int[N];
-            for (int i = 0; i < N; i++) {
-                st = new StringTokenizer(br.readLine());
-                tasteScores[i] = Integer.parseInt(st.nextToken());
-                calories[i] = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        int[] tree = new int[N];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i=0;i<N;i++) {
+            tree[i] = Integer.parseInt(st.nextToken());
+        }
+
+        Arrays.sort(tree);
+
+        int min = tree[0];
+        int max = tree[N-1];
+        int mid = (max+min) /2;
+
+        int answer = 0;
+        while (true) {
+            int sum = 0;
+            for (int i=N-1;i>=0;i--) {
+                if (tree[i] <= mid) {
+                    break;
+                }
+                sum += tree[i] - mid;
             }
 
-            calculateScore(0, N, L, 0, 0, tasteScores, calories);
-            System.out.println(max);
+            if (sum >= M) {
+                answer = mid;
+            }
+
+            if (mid >= max) {
+                break;
+            }
+            mid = (max+mid) / 2 + 1;
         }
+
+        System.out.println(answer);
     }
 }
