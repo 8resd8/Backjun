@@ -5,7 +5,6 @@ package Backjoon.gold.g4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class 부분합_1806 {
@@ -20,11 +19,11 @@ public class 부분합_1806 {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        int[] nuSum = new int[N + 1];
-        for (int i = 1; i < nuSum.length; i++) {
-            nuSum[i] = nuSum[i - 1] + arr[i - 1];
-        }
+        System.out.println(getAnswer2(N, S, arr));
+    }
 
+    // 버전 2: 192ms
+    private static int getAnswer2(int N, int S, int[] arr) {
         int answer = Integer.MAX_VALUE;
         int left = 0;
         int right = 0;
@@ -32,9 +31,30 @@ public class 부분합_1806 {
         int length = 0;
 
         while (left < N) {
-            if (arr[left] > S) {
-                break;
+            if (sum < S && right < N) {
+                sum += arr[right++];
+                length++;
+                continue;
             }
+            if (sum >= S) answer = Math.min(answer, length);
+
+            sum -= arr[left++]; // right를 초기화시키는 것이 아니라 왼쪽을 당기면서 제일 왼쪽 삭제
+            length--;
+        }
+
+        return answer == Integer.MAX_VALUE ? 0 : answer;
+    }
+
+    // 버전 1: 940ms
+    private static int getAnswer(int N, int S, int[] arr) {
+        int answer = Integer.MAX_VALUE;
+        int left = 0;
+        int right = 0;
+        int sum = 0;
+        int length = 0;
+
+        while (left < N) {
+            if (answer == 0) break;
 
             if (sum >= S || right >= N) {
                 if (sum >= S) answer = Math.min(answer, length);
@@ -48,12 +68,9 @@ public class 부분합_1806 {
 
 
             sum += arr[right];
-//            System.out.printf("right: %d, arr[%d] = %d, sum: %d, length: %d\n ", right, right, arr[right], sum, length);
-//            System.out.println("left = " + left);
             right++;
             length++;
         }
-
-        System.out.println(answer == Integer.MAX_VALUE ? 0 : answer);
+        return answer;
     }
 }
