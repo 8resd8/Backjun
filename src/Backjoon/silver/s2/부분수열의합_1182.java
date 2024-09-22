@@ -36,7 +36,6 @@ public class 부분수열의합_1182 {
         }
     }
 
-<<<<<<< HEAD
 
     private static void permutation(int index, ArrayList<Integer> temp) {
         if (!temp.isEmpty()) {
@@ -54,6 +53,4 @@ public class 부분수열의합_1182 {
         }
     }
 
-=======
->>>>>>> 608fd99a42ed9c0b4da5b7780534302cfb675949
 }
