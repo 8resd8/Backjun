@@ -36,4 +36,21 @@ public class 부분수열의합_1182 {
         }
     }
 
+
+    private static void permutation(int index, ArrayList<Integer> temp) {
+        if (!temp.isEmpty()) {
+            int sum = 0;
+            for (Integer i : temp) {
+                sum += i;
+            }
+            if (sum == S) count++;
+        }
+
+        for (int i = index; i < N; i++) {
+            temp.add(numbers.get(i));
+            permutation(i + 1, temp);
+            temp.remove(temp.size() - 1);
+        }
+    }
+
 }

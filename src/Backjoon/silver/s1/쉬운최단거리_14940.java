@@ -20,11 +20,12 @@ public class 쉬운최단거리_14940 {
     }
 
     private static void print() {
-        visited[targetX][targetY] = 0;
         StringBuilder sb = new StringBuilder();
-        for (int[] ints : visited) {
-            for (int anInt : ints) {
-                sb.append(anInt).append(" ");
+        visited[targetX][targetY] = 0;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                if (visited[i][j] == 0 && map[i][j] == 1) sb.append(-1).append(" ");
+                else sb.append(visited[i][j]).append(" ");
             }
             sb.append("\n");
         }
@@ -38,6 +39,7 @@ public class 쉬운최단거리_14940 {
         M = Integer.parseInt(NM[1]);
         map = new int[N][M];
         visited = new int[N][M];
+
         for (int i = 0; i < N; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             for (int j = 0; j < M; j++) {
@@ -63,7 +65,7 @@ public class 쉬운최단거리_14940 {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
 
-                if (nx < 0 || nx >= M || ny < 0 || ny >= N) continue;
+                if (nx < 0 || nx >= N || ny < 0 || ny >= M) continue;
                 if (visited[nx][ny] != 0 || map[nx][ny] == 0) continue;
                 queue.add(new int[]{nx, ny});
                 visited[nx][ny] = visited[x][y] + 1;

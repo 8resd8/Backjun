@@ -69,6 +69,7 @@ public class 최소비용구하기2_11779 {
 
     private static void dijkstra(int start, int end) {
         dist = new int[N + 1];
+        prev = new int[N + 1];
         Arrays.fill(dist, Integer.MAX_VALUE);
         Arrays.fill(prev, -1);
         PriorityQueue<Edge> pq = new PriorityQueue<>();
@@ -77,6 +78,8 @@ public class 최소비용구하기2_11779 {
 
         while (!pq.isEmpty()) {
             Edge cur = pq.poll();
+
+            if (dist[cur.end] < cur.cost) continue;
 
             for (Edge next : adj.get(cur.end)) {
                 if (dist[next.end] > cur.cost + next.cost) {
