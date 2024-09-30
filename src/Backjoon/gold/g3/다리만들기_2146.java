@@ -1,16 +1,16 @@
-package 입출력과사칙연산.src;
+package 입출력과사칙연산.src.Backjoon.gold.g3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class 다리만들기_2146 {
     static int N, name, minLength;
-    static int[][] map, visited;
+    static int[][] map;
+    static boolean[][] setName, visited;
     static int[] dx = {-1, 1, 0, 0}; // 상 하 좌 우
     static int[] dy = {0, 0, 1, -1};
 
@@ -32,39 +32,36 @@ public class Main {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (map[i][j] == 1) {
-                    visited = new int[N][N];
                     setName(i, j);
                 }
             }
         }
 
-        int count = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (map[i][j] != 0) {
-                    visited = new int[N][N];
                     bfs(i, j, map[i][j]);
-                    count++;
                 }
             }
         }
-        System.out.println(count);
 
         System.out.println(minLength - 1);
     }
 
     private static void bfs(int i, int j, int value) {
         Queue<int[]> queue = new ArrayDeque<>();
-        queue.add(new int[]{i, j});
-        visited[i][j] = 0;
+        visited = new boolean[N][N];
+        queue.add(new int[]{i, j, 0});
+        visited[i][j] = true;
 
         while (!queue.isEmpty()) {
             int[] cur = queue.poll();
             int x = cur[0];
             int y = cur[1];
+            int dist = cur[2];
 
             if (map[x][y] != 0 && map[x][y] != value) { // 섬과 닿은 경우
-                minLength = Math.min(minLength, visited[x][y]);
+                minLength = Math.min(minLength, dist);
             }
 
             for (int k = 0; k < 4; k++) {
@@ -72,11 +69,11 @@ public class Main {
                 int ny = y + dy[k];
 
                 if (nx < 0 || nx >= N || ny < 0 || ny >= N) continue;
-                if (visited[nx][ny] != 0 || map[nx][ny] == value) continue;
+                if (visited[nx][ny] || map[nx][ny] == value) continue;
 
-                if (minLength > visited[x][y] + 1) {
-                    queue.add(new int[]{nx, ny});
-                    visited[nx][ny] = visited[x][y] + 1;
+                if (minLength > dist + 1) {
+                    queue.add(new int[]{nx, ny, dist + 1});
+                    visited[nx][ny] = true;
                 }
             }
         }
@@ -85,7 +82,7 @@ public class Main {
     private static void setName(int i, int j) {
         Queue<int[]> queue = new ArrayDeque<>();
         queue.add(new int[]{i, j});
-        visited[i][j] = 1;
+        setName = new boolean[N][N];
         map[i][j] = name;
 
         while (!queue.isEmpty()) {
@@ -98,13 +95,12 @@ public class Main {
                 int ny = y + dy[k];
 
                 if (nx < 0 || nx >= N || ny < 0 || ny >= N) continue;
-                if (visited[nx][ny] != 0 || map[nx][ny] == 0) continue;
+                if (setName[nx][ny] || map[nx][ny] == 0) continue;
                 queue.add(new int[]{nx, ny});
-                visited[nx][ny] = 1;
+                setName[nx][ny] = true;
                 map[nx][ny] = name;
             }
         }
-
         name++;
     }
 }
