@@ -9,18 +9,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        StringTokenizer st = new StringTokenizer(br.readLine());
-        System.out.println("  ___  ___  ___\n" +
-                "  | |__| |__| |\n" +
-                "  |           |\n" +
-                "   \\_________/\n" +
-                "    \\_______/\n" +
-                "     |     |\n" +
-                "     |     |\n" +
-                "     |     |\n" +
-                "     |     |\n" +
-                "     |_____|\n" +
-                "  __/       \\__\n" +
-                " /             \\\n" +
-                "/_______________\\");
+        System.out.println(br.readLine().toUpperCase());
     }
 }
