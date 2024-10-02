@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 별자리만들기_4386 {
+public class 별자리만들기_4386XX {
     static class Edge implements Comparable<Edge> {
         double start, end, cost;
 
