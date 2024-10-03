@@ -1,13 +1,13 @@
-package 입출력과사칙연산.src.Backjoon;
+package Backjoon;
 
-// https://www.acmicpc.net/problem/14003
+// https://www.acmicpc.net/problem/11053
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 가장긴증가하는부분수열_14003 {
+public class 가장긴증가하는부분수열_11053 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -27,10 +27,6 @@ public class 가장긴증가하는부분수열_14003 {
         }
 
         System.out.println(e);
-        for (int li : LIS) {
-            if (li != 0) System.out.print(li + " ");
-        }
-
     }
 
     private static int binary(int[] arr, int s, int e, int value) {
