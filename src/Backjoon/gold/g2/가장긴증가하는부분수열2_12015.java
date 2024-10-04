@@ -27,7 +27,7 @@ public class 가장긴증가하는부분수열2_12015 {
             if (index == e) e++;
 
         }
-        System.out.println(Arrays.toString(lis));
+
         System.out.println(e);
     }
 
