@@ -1,4 +1,4 @@
-package 입출력과사칙연산.src.Backjoon.gold.g1;
+package Backjoon.gold.g1;
 
 // https://www.acmicpc.net/problem/16933
 
@@ -57,7 +57,7 @@ public class 벽부수고이동하기3_16933 {
                 if (nx < 0 || nx >= N || ny < 0 || ny >= M) continue;
                 if (visited[nx][ny][k] || (k == 0 && map[nx][ny] == 1)) continue;
 
-                // 부술 수 있고 낮이면 부시고 이동
+                // 부술 수 있고 밤이 아니면 부시고 이동
                 if (map[nx][ny] == 1 && !night) {
                     q.add(new int[]{nx, ny, count + 1, k - 1});
                     visited[nx][ny][k - 1] = true;
