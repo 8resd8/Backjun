@@ -1,8 +1,6 @@
-package A1_자료구조.DFS;
+package A_알고리즘.A1_자료구조.DFS;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Stack;
 
 class Graph {

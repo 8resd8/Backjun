@@ -1,4 +1,4 @@
-package A1_자료구조.그래프;
+package A_알고리즘.A1_자료구조.그래프;
 
 import java.util.ArrayList;
 import java.util.HashMap;

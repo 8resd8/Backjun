@@ -1,4 +1,4 @@
-package A1_자료구조.연결리스트;
+package A_알고리즘.A1_자료구조.연결리스트;
 
 public class Node {
     int data; // 데이터를 저장하는 변수

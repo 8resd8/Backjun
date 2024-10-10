@@ -1,4 +1,4 @@
-package A1_자료구조.연결리스트;
+package A_알고리즘.A1_자료구조.연결리스트;
 
 
 import java.util.HashSet;

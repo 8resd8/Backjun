@@ -1,4 +1,4 @@
-package A1_자료구조.최소신장트리;
+package A_알고리즘.A1_자료구조.최소신장트리;
 
 // https://www.acmicpc.net/problem/1197
 

@@ -1,4 +1,4 @@
-package A1_자료구조.큐;
+package A_알고리즘.A1_자료구조.큐;
 
 
 public class LinkedListQueue {
