@@ -1,4 +1,4 @@
-package A1_자료구조.스택;
+package A_알고리즘.A1_자료구조.스택;
 
 public class ArrayStack {
     private final int maxSize; // 스택 최대 크기

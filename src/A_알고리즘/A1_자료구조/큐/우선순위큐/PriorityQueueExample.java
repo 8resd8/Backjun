@@ -1,4 +1,4 @@
-package A1_자료구조.큐.우선순위큐;
+package A_알고리즘.A1_자료구조.큐.우선순위큐;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

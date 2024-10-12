@@ -1,4 +1,4 @@
-package A1_자료구조.최소신장트리;
+package A_알고리즘.A1_자료구조.최소신장트리;
 
 public class 최소신장트리 {
     static int[] parent, rank;

@@ -1,4 +1,4 @@
-package A1_자료구조.BFS;
+package A_알고리즘.A1_자료구조.BFS;
 
 import java.util.*;
 
