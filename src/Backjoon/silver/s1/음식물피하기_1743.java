@@ -28,27 +28,30 @@ public class 음식물피하기_1743 {
             int y = Integer.parseInt(st.nextToken()) - 1;
             map[x][y] = true; // 쓰레기가 있으면 true
         }
-
+        int answer = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (map[i][j] && !visited[i][j]) {
                     visited[i][j] = true;
-                    dfs(i, j, 1);
+                    maxSize = 1;
+                    dfs(i, j);
+                    answer = Math.max(answer, maxSize);
+                    maxSize = 0;
                 }
             }
         }
-        System.out.println(maxSize);
+        System.out.println(answer);
     }
 
-    private static void dfs(int x, int y, int size) {
-        maxSize = Math.max(maxSize, size);
+    private static void dfs(int x, int y) {
 
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
             if (nx < 0 || nx >= N || ny < 0 || ny >= M || !map[nx][ny] || visited[nx][ny]) continue;
             visited[nx][ny] = true;
-            dfs(nx, ny, size + 1);
+            dfs(nx, ny);
+            maxSize++;
         }
     }
 }
