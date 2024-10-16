@@ -34,16 +34,14 @@ public class 나무자르기_2805 {
                 if (arr[i] > mid) tree += (arr[i] - mid);
             }
 
-            if (tree > mid) {
+            if (tree >= M) { // 적어도 M만큼에 가까워지도록 절단기(mid)를 조정해야함
                 left = mid + 1;
             } else {
                 right = mid - 1;
             }
 
-            System.out.printf("L: %d, R: %d, mid: %d, tree: %d\n", left, right, mid, tree);
         }
 
-        System.out.println("left = " + left);
-        System.out.println("right = " + right);
+        System.out.println(right);
     }
 }
