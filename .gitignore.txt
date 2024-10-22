@@ -176,3 +176,4 @@ $RECYCLE.BIN/
 # src 폴더 안의 모든 파일과 폴더 포함
 !src/
 !src/**
+!.gitignore
