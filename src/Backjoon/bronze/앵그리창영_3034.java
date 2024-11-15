@@ -5,17 +5,19 @@ package Backjoon.bronze;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class 앵그리창영_3034 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int[] in = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int length = (int) Math.sqrt((in[1]*in[1]) + (in[2]*in[2]));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int x = Integer.parseInt(st.nextToken());
+        int y = Integer.parseInt(st.nextToken());
+        int length = (int) Math.sqrt((x * x) + (y * y));
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < in[0]; i++) {
+        for (int i = 0; i < n; i++) {
             int input = Integer.parseInt(br.readLine());
             if (input <= length) sb.append("DA");
             else sb.append("NE");
