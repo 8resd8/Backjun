@@ -2,7 +2,24 @@
 
 
 # MST, 최소 스패닝 트리
-바로 PQ에 넣기
+start, end, cost, 바로 PQ에 넣기
+
+static class Edge implements Comparable<Edge> {
+        int start, end, cost;
+
+        Edge(int start, int end, int cost) {
+            this.start = start;
+            this.end = end;
+            this.cost = cost;
+        }
+
+        @Override
+        public int compareTo(Edge o) {
+            return Integer.compare(cost, o.cost);
+        }
+    }
+}
+
 t = Integer.parseInt(st.nextToken());
 PriorityQueue<Edge> pq = new PriorityQueue<>();
 parent = new int[N + 1];
@@ -57,6 +74,7 @@ public static void main(String[] args) throws Exception {
         int start = Integer.parseInt(st.nextToken());
         int end = Integer.parseInt(st.nextToken());
         int cost = Integer.parseInt(st.nextToken());
-        adj.get(start).add(new Edge(end, cost)); // 방향성이 없다 -> 양방향
+        adj.get(start).add(new Edge(end, cost));
         adj.get(end).add(new Edge(start, cost));
     }
+}
