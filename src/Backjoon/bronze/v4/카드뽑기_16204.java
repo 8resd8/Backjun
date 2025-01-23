@@ -11,6 +11,14 @@ public class 카드뽑기_16204 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
 
+        int maxO = Math.min(M, K);
+        int maxX = Math.min(N - M, N - K);
+        int result = maxO + maxX;
+
+        System.out.println(result);
     }
 }
