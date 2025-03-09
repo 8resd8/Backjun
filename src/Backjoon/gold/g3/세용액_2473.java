@@ -27,7 +27,7 @@ public class 세용액_2473 {
 			int left = i + 1;
 			int right = N - 1;
 
-			// i는 고정하고 뒤에 값으로 이진탐색
+			// i는 고정하고 뒤에 값으로 투포인터 검색
 			while (left < right) {
 				long sum = (long)arr[i] + arr[left] + arr[right];
 
