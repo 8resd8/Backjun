@@ -1,4 +1,4 @@
-package 정처기;
+package 정처기.java;
 
 class Parent {
 	int compute(int num) {

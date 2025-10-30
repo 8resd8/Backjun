@@ -1,4 +1,4 @@
-package 정처기;
+package 정처기.java;
 
 public class Q7 {
 	public static class BO {

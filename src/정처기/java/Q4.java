@@ -1,4 +1,4 @@
-package 정처기;
+package 정처기.java;
 
 public class Q4 {
 	public static void change(String[] data, String s){
