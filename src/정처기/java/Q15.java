@@ -1,6 +1,6 @@
-package other;
+package 정처기.java;
 
-class 타입추론 {
+class Q15 {
 
 	public static class Collection<T>{
 		T value;
